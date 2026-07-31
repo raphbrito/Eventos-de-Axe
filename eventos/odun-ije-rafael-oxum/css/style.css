@@ -352,6 +352,122 @@ small {
 }
 
 /* ==========================================================
+   ABERTURA DO CONVITE
+========================================================== */
+
+.invitation-intro {
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 3rem 1.25rem;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(212, 175, 55, .18), transparent 37%),
+        linear-gradient(145deg, rgba(8, 8, 9, .94), rgba(30, 25, 15, .90));
+}
+.invitation-intro::before,
+.invitation-intro::after {
+    content: "";
+    position: absolute;
+    inset: 1.25rem;
+    z-index: -1;
+    border: 1px solid rgba(212, 175, 55, .22);
+    pointer-events: none;
+}
+.invitation-intro::after {
+    inset: 1.7rem;
+    border-color: rgba(255, 255, 255, .06);
+}
+.invitation-aura {
+    position: absolute;
+    inset: -25%;
+    z-index: -1;
+    background: conic-gradient(from 180deg at 50% 50%, transparent, rgba(212, 175, 55, .12), transparent 34%);
+    animation: invitation-aura 12s linear infinite;
+}
+.invitation-content {
+    width: min(100%, 31rem);
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    animation: invitation-enter 1.4s cubic-bezier(.19, 1, .22, 1) both;
+}
+.invitation-kicker,
+.invitation-name {
+    color: var(--color-primary-light);
+    font-size: var(--text-sm);
+    font-weight: var(--text-semibold);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+.invitation-content h1 {
+    margin: .4rem 0 .2rem;
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 7vw, 4.25rem);
+    font-weight: var(--text-semibold);
+}
+.invitation-name { margin-bottom: 1.5rem; }
+.invitation-frame {
+    position: relative;
+    width: min(100%, 26rem);
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, .6);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .58), 0 0 3.5rem rgba(212, 175, 55, .14);
+    animation: invitation-reveal 1.7s cubic-bezier(.19, 1, .22, 1) .18s both;
+}
+.invitation-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .35) 50%, transparent 65%);
+    transform: translateX(-130%);
+    animation: invitation-shine 1.35s ease-out 1.35s both;
+    pointer-events: none;
+}
+.invitation-frame img { width: 100%; }
+.invitation-continue {
+    display: grid;
+    justify-items: center;
+    gap: .65rem;
+    margin-top: 1.6rem;
+    color: var(--color-primary-light);
+    font-size: var(--text-sm);
+    font-weight: var(--text-semibold);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+.invitation-continue span {
+    width: 1px;
+    height: 2.5rem;
+    background: linear-gradient(var(--color-primary), transparent);
+    animation: invitation-pulse 2.4s ease-in-out infinite;
+}
+@keyframes invitation-enter {
+    from { opacity: 0; transform: translateY(1.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes invitation-reveal {
+    from { clip-path: inset(48% 0 48% 0); transform: scale(.97); opacity: .2; }
+    to { clip-path: inset(0); transform: scale(1); opacity: 1; }
+}
+@keyframes invitation-shine { to { transform: translateX(130%); } }
+@keyframes invitation-aura { to { transform: rotate(1turn); } }
+@keyframes invitation-pulse { 50% { opacity: .35; transform: scaleY(.72); } }
+
+@media (prefers-reduced-motion: reduce) {
+    .invitation-aura,
+    .invitation-content,
+    .invitation-frame,
+    .invitation-frame::after,
+    .invitation-continue span {
+        animation: none;
+    }
+}
+
+/* ==========================================================
    COMPONENTES
 ========================================================== */
 
