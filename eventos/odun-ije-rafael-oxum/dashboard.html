@@ -48,7 +48,7 @@
     <!-- LOGIN -->
     <!-- ================================================== -->
 
-    <main id="login" class="login page">
+    <main id="login" class="login page" hidden>
 
         <section class="section">
 
@@ -322,7 +322,7 @@
                     </header>
 
                     <!-- Estatísticas Principais -->
-                    <div class="grid cols-5 dashboard-stats-grid dashboard-stats-grid-primary">
+                    <div class="grid cols-2 dashboard-stats-grid dashboard-stats-grid-primary">
 
                         <!-- Respostas Recebidas -->
                         <article class="surface stats-card">
@@ -332,6 +332,20 @@
                                 </span>
                                 <strong
                                     id="totalRsvp"
+                                    class="stats-card-value">
+                                    0
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Total de Pessoas Presentes -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Total de Pessoas Presentes
+                                </span>
+                                <strong
+                                    id="totalPeople"
                                     class="stats-card-value">
                                     0
                                 </strong>
@@ -365,39 +379,6 @@
                                 </strong>
                             </div>
                         </article>
-
-                        <!-- Total de Pessoas Presentes -->
-                        <article class="surface stats-card">
-                            <div class="stats-card-content">
-                                <span class="stats-card-label">
-                                    Total de Pessoas Presentes
-                                </span>
-                                <strong
-                                    id="totalPeople"
-                                    class="stats-card-value">
-                                    0
-                                </strong>
-                            </div>
-                        </article>
-
-                        <!-- Total de Não Presentes -->
-                        <article class="surface stats-card">
-                            <div class="stats-card-content">
-                                <span class="stats-card-label">
-                                    Total de Não Presentes
-                                </span>
-                                <strong
-                                    id="totalAbsent"
-                                    class="stats-card-value">
-                                    0
-                                </strong>
-                            </div>
-                        </article>
-
-                    </div>
-
-                    <!-- Indicadores -->
-                    <div class="grid cols-4 dashboard-stats-grid dashboard-stats-grid-secondary">
 
                         <!-- Taxa de Confirmação -->
                         <article class="surface stats-card">

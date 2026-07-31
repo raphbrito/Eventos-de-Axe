@@ -19,7 +19,6 @@ const elements = {
     totalConfirmed: document.getElementById("totalConfirmed"),
     totalCompanions: document.getElementById("totalCompanions"),
     totalPeople: document.getElementById("totalPeople"),
-    totalAbsent: document.getElementById("totalAbsent"),
     confirmationRate: document.getElementById("confirmationRate"),
     averageCompanions: document.getElementById("averageCompanions"),
     lastResponse: document.getElementById("lastResponse"),
@@ -224,8 +223,6 @@ function updateStatistics() {
         stats.acompanhantes;
     elements.totalPeople.textContent =
         stats.pessoas;
-    elements.totalAbsent.textContent =
-        stats.recusas;
     elements.confirmationRate.textContent =
         `${stats.taxaConfirmacao.toFixed(2)}%`;
     elements.averageCompanions.textContent =
