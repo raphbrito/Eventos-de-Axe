@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <!-- ================================================== -->
+    <!-- META TAGS -->
+    <!-- ================================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ================================================== -->
+    <!-- TÍTULO -->
+    <!-- ================================================== -->
+
+    <title>Painel Administrativo | Odún Ìjé</title>
+
+    <!-- ================================================== -->
+    <!-- FAVICON -->
+    <!-- ================================================== -->
+
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- ================================================== -->
+    <!-- FONTES -->
+    <!-- ================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- ================================================== -->
+    <!-- ESTILOS -->
+    <!-- ================================================== -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- ================================================== -->
+    <!-- LOGIN -->
+    <!-- ================================================== -->
+
+    <main id="login" class="login page">
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="surface">
+
+                    <div class="login-layout">
+
+                        <!-- Logo -->
+
+                        <img
+                            src="img/logo-evento.png"
+                            alt="Logo do Odún Ìjé"
+                            class="login-logo">
+
+                        <!-- Conteúdo -->
+
+                        <div class="login-content">
+
+                            <h1 class="section-title">
+                                Acesso Administrativo
+                            </h1>
+
+                            <p class="section-subtitle">
+                                Entre com suas credenciais para acessar o painel
+                                administrativo do RSVP do Odún Ìjé.
+                            </p>
+
+                        </div>
+
+                        <!-- Formulário -->
+
+                        <form
+                            id="loginForm"
+                            class="login-form"
+                            autocomplete="off">
+
+                            <div class="form-group">
+
+                                <label
+                                    for="username"
+                                    class="form-label">
+
+                                    Usuário
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    class="form-input"
+                                    placeholder="Digite seu usuário"
+                                    required>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label
+                                    for="password"
+                                    class="form-label">
+
+                                    Senha
+
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-input"
+                                    placeholder="Digite sua senha"
+                                    required>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary">
+
+                                Entrar
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================================== -->
+    <!-- DASHBOARD -->
+    <!-- ================================================== -->
+
+    <main
+        id="dashboard"
+        class="dashboard page"
+        hidden>
+
+        <!-- ================================================== -->
+        <!-- HEADER -->
+        <!-- ================================================== -->
+
+        <header class="dashboard-header">
+
+            <div class="container">
+
+                <div class="surface">
+
+                    <div class="dashboard-header-layout cluster">
+
+                        <!-- Logo -->
+
+                        <a
+                            href="index.html"
+                            class="dashboard-brand"
+                            aria-label="Voltar para o convite">
+
+                            <img
+                                src="img/logo-evento.png"
+                                alt="Logo do Odún Ìjé"
+                                class="dashboard-logo">
+
+                        </a>
+
+                        <!-- Sair -->
+
+                        <button
+                            id="logoutButton"
+                            type="button"
+                            class="btn btn-secondary">
+
+                            Sair
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================================================== -->
+        <!-- LISTA DE CONVIDADOS -->
+        <!-- ================================================== -->
+
+        <section class="dashboard-guests section">
+
+            <div class="container">
+
+                <div class="stack">
+
+                    <!-- Cabeçalho da Seção -->
+
+                    <header class="section-header dashboard-section-header">
+
+                        <div class="dashboard-section-content stack">
+
+                            <h2 class="section-title">
+                                Lista de Convidados
+                            </h2>
+
+                            <p class="section-subtitle">
+                                Relação completa dos convidados que responderam ao
+                                formulário de RSVP, organizada em ordem alfabética.
+                            </p>
+
+                        </div>
+
+                        <div class="dashboard-section-actions cluster">
+
+                            <button
+                                type="button"
+                                id="exportPdf"
+                                class="btn btn-secondary">
+
+                                Exportar PDF
+
+                            </button>
+
+                            <button
+                                type="button"
+                                id="exportReceptionPdf"
+                                class="btn btn-secondary">
+
+                                Lista de Recepção
+
+                            </button>
+
+                            <button
+                                type="button"
+                                id="exportExcel"
+                                class="btn btn-primary">
+
+                                Exportar Excel
+
+                            </button>
+
+                        </div>
+
+                    </header>
+
+                    <!-- Tabela -->
+
+                    <div class="surface dashboard-table-wrapper">
+
+                        <table class="dashboard-table">
+
+                            <thead>
+
+                                <tr id="guestTableHeader">
+
+                                    <th>Convidado</th>
+
+                                    <th>Confirmação</th>
+
+                                    <th>Acompanhantes</th>
+
+                                    <th>Data da Resposta</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="guestTableBody">
+
+                                <!--
+                                    As linhas serão inseridas
+                                    dinamicamente pelo JavaScript.
+                                -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================================================== -->
+        <!-- ESTATÍSTICAS -->
+        <!-- ================================================== -->
+
+        <section class="dashboard-stats section">
+            <div class="container">
+                <div class="stack">
+
+                    <header class="section-header dashboard-section-header">
+                        <h2 class="section-title">
+                            Estatísticas do Evento
+                        </h2>
+                        <p class="section-subtitle">
+                            Resumo geral das confirmações de presença do Odún Ìjé.
+                        </p>
+                    </header>
+
+                    <!-- Estatísticas Principais -->
+                    <div class="grid cols-5 dashboard-stats-grid dashboard-stats-grid-primary">
+
+                        <!-- Respostas Recebidas -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Respostas Recebidas
+                                </span>
+                                <strong
+                                    id="totalRsvp"
+                                    class="stats-card-value">
+                                    0
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Convidados Confirmados -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Convidados Confirmados
+                                </span>
+                                <strong
+                                    id="totalConfirmed"
+                                    class="stats-card-value">
+                                    0
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Total de Acompanhantes -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Total de Acompanhantes
+                                </span>
+                                <strong
+                                    id="totalCompanions"
+                                    class="stats-card-value">
+                                    0
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Total de Pessoas Presentes -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Total de Pessoas Presentes
+                                </span>
+                                <strong
+                                    id="totalPeople"
+                                    class="stats-card-value">
+                                    0
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Total de Não Presentes -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Total de Não Presentes
+                                </span>
+                                <strong
+                                    id="totalAbsent"
+                                    class="stats-card-value">
+                                    0
+                                </strong>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- Indicadores -->
+                    <div class="grid cols-4 dashboard-stats-grid dashboard-stats-grid-secondary">
+
+                        <!-- Taxa de Confirmação -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Taxa de Confirmação
+                                </span>
+                                <strong
+                                    id="confirmationRate"
+                                    class="stats-card-value">
+                                    0,00%
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Média de Acompanhantes -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Média de Acompanhantes
+                                </span>
+                                <strong
+                                    id="averageCompanions"
+                                    class="stats-card-value">
+                                    0,00
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Última Resposta -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Última Resposta
+                                </span>
+                                <strong
+                                    id="lastResponse"
+                                    class="stats-card-value">
+                                    --
+                                </strong>
+                            </div>
+                        </article>
+
+                        <!-- Última Atualização -->
+                        <article class="surface stats-card">
+                            <div class="stats-card-content">
+                                <span class="stats-card-label">
+                                    Última Atualização
+                                </span>
+                                <strong
+                                    id="statsLastUpdate"
+                                    class="stats-card-value">
+                                    --
+                                </strong>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================== -->
+        <!-- FOOTER -->
+        <!-- ================================================== -->
+
+        <footer class="footer">
+
+            <div class="container">
+
+                <div class="surface">
+
+                    <div class="footer-layout">
+
+                        <!-- Logos -->
+
+                        <div class="footer-brands">
+
+                            <a
+                                id="btnAseEsmeralda"
+                                class="footer-brand-link"
+                                href="https://www.instagram.com/aseesmeralda/"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                <img
+                                    class="footer-logo"
+                                    src="img/brasao1.png"
+                                    alt="Brasão do Igbá Àṣẹ Iyá Aféfé Igbin Lórun">
+
+                            </a>
+
+                            <a
+                                id="btnAseTopazio"
+                                class="footer-brand-link"
+                                href="https://www.instagram.com/asetopazio/"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                <img
+                                    class="footer-logo"
+                                    src="img/brasao2.png"
+                                    alt="Brasão do Ilé Àṣẹ Iyá Ypondá">
+                            
+                            </a>
+
+                        </div>
+
+                        <!-- Texto -->
+
+                        <p class="footer-text">
+
+                            Que este painel administrativo seja um instrumento de
+                            organização e respeito aos nossos convidados,
+                            contribuindo para que o Odún Ìjé aconteça com harmonia,
+                            responsabilidade e muito Àṣẹ.
+
+                        </p>
+
+                        <!-- Copyright -->
+
+                        <div class="footer-copy">
+
+                            <p>
+                                ©
+                                <span id="currentYear"></span>
+                                Todos os direitos reservados.
+                            </p>
+
+                            <p>
+                                Igbá Àṣẹ Iyá Aféfé Igbin Lórun
+                            </p>
+
+                            <p>
+                                Ilé Àṣẹ Iyá Ypondá
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- ================================================== -->
+    <!-- TOAST -->
+    <!-- ================================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true">
+
+        <span id="toastMessage">
+
+            Mensagem
+
+        </span>
+
+    </div>
+
+    <!-- ================================================== -->
+    <!-- FOOTER INSTITUCIONAL -->
+    <!-- ================================================== -->
+    <footer class="system-footer">
+        <div class="container">
+            <div class="system-footer-content stack">
+                <div class="system-footer-brand stack">
+                    <h2 id="systemName" class="system-footer-title">--</h2>
+                    <p id="systemDescription" class="system-footer-description">--</p>
+                </div>
+
+                <p class="system-footer-developer">
+                    Desenvolvido por
+                    <a id="systemDeveloper" href="#" target="_blank" rel="noopener noreferrer">--</a>
+                </p>
+
+                <nav class="system-footer-links" aria-label="Links do projeto">
+                    <a id="systemGithub" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <span class="system-footer-separator" aria-hidden="true">•</span>
+                    <a id="systemRepository" href="#" target="_blank" rel="noopener noreferrer">Repositório</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================================== -->
+    <!-- SCRIPTS -->
+    <!-- ================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script src="js/dados-evento.js"></script>
+    <script src="js/exports.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/system.js"></script>
+
+</body>
+
+</html>

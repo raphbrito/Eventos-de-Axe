@@ -1,0 +1,1 @@
+window.EVENTO = { nome: 'Odún Ìjé', titulo: 'Odún Ìjé — Rafael de Oxum', descricao: 'Celebração dos 7 anos de iniciação religiosa de Rafael de Oxum.', data: '21 de novembro de 2026, às 17h', local: 'Igbá Àṣẹ Iyá Aféfê Igbin Lórun — Magé, RJ', rsvp: 'https://forms.gle/7nrGWsSwQBR8tsn18', logo: 'assets/logo-evento.png' };
