@@ -125,7 +125,7 @@ body {
             var(--color-overlay),
             var(--color-overlay)
         ),
-        var(--event-background, url("../img/fundo.png")) center / cover fixed;
+        var(--event-background, url("../img/fundo.png")) center top / contain no-repeat fixed;
     color: var(--color-text);
     font-family: var(--font-body);
     font-size: var(--text-md);

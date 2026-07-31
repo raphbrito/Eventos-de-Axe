@@ -36,7 +36,9 @@ async function requestMyEvents() {
 }
 
 function home() {
-  shell('<section class="hero panel"><p>Plataforma de convites, RSVP e gestão de eventos.</p><h1>Eventos de Axé</h1><p>Uma área administrativa única para criar, acompanhar e organizar seus eventos.</p><p><a class="button" href="#/login">Entrar na área administrativa</a></p></section>', 'home-panel');
+  shell(`<section class="institutional-hero"><p class="eyebrow">Eventos de Axé</p><h1>Eventos que acolhem histórias, memórias e celebrações.</h1><p class="institutional-lead">Uma plataforma criada para transformar a organização de convites e confirmações em uma experiência mais humana, clara e bonita.</p></section>
+    <section class="institutional-grid"><article><h2>Como nasceu</h2><p>O Eventos de Axé nasceu da necessidade de reunir, em um só lugar, os convites digitais, os RSVPs e o acompanhamento de cada celebração.</p></article><article><h2>Uma ideia com propósito</h2><p>Idealizado por Rafael Brito, o projeto foi pensado para servir eventos com identidade própria, respeitando a história, a estética e as necessidades de cada realização.</p></article><article><h2>O que fazemos</h2><p>Cada evento tem uma página pública exclusiva e um painel administrativo protegido, com lista de convidados, respostas e dados organizados para quem realiza.</p></article></section>
+    <section class="institutional-note"><h2>Uma base para muitos encontros</h2><p>O sistema cresce junto com os eventos que hospeda: cada celebração mantém sua personalidade, enquanto a gestão permanece simples, segura e centralizada.</p></section>`, 'home-panel');
 }
 
 function login() {
@@ -60,7 +62,7 @@ async function events() {
 }
 
 function eventCard(event) {
-  return `<article class="card event-card"><p class="eyebrow">${escapeHtml(event.slug)}</p><h2>${escapeHtml(event.nome)}</h2><div class="card-actions"><a class="button" href="#/evento/${encodeURIComponent(event.slug)}">Dashboard</a><a class="button secondary" href="${eventUrl(event.slug)}" target="_blank" rel="noopener">Página pública</a></div></article>`;
+  return `<article class="card event-card"><p class="eyebrow">${escapeHtml(event.slug)}</p><h2>${escapeHtml(event.nome)}</h2><div class="card-actions"><a class="button" href="#/evento/${encodeURIComponent(event.slug)}" target="_blank" rel="noopener">Dashboard</a><a class="button secondary" href="${eventUrl(event.slug)}" target="_blank" rel="noopener">Página pública</a></div></article>`;
 }
 
 function userRow(user) {
@@ -75,7 +77,7 @@ async function admin() {
     const [all, users] = await Promise.all([Api.request('events', 'GET', {}, true), Api.request('admin-users', 'GET', {}, true)]);
     shell(`<div class="page-heading"><div><p class="eyebrow">Administração</p><h1>Painel administrativo global</h1><p class="muted">Gerencie eventos, acessos e administradores do sistema.</p></div></div>
       <div class="admin-layout"><section class="card"><h2>Novo evento</h2><form id="event-form" class="form compact-form"><label>Nome<input name="nome" required></label><label>Slug<input name="slug" pattern="[a-z0-9-]+" required></label><label>ID da planilha RSVP<input name="planilhaRsvpId" required></label><label>Aba de respostas<input name="abaRsvp" required></label><label>E-mail da responsável<input name="emailResponsavel" type="email" required></label><button class="button">Criar evento</button></form></section>
-      <section class="card"><h2>Convidar administradora global</h2><p class="muted">O convite permite criar uma conta com acesso a todos os eventos.</p><form id="global-invite" class="form compact-form"><label>E-mail<input name="email" type="email" required></label><button class="button secondary">Enviar convite</button></form></section></div>
+      <section class="card"><h2>Convidar administrador global</h2><p class="muted">O convite permite criar uma conta com acesso a todos os eventos.</p><form id="global-invite" class="form compact-form"><label>E-mail<input name="email" type="email" required></label><button class="button secondary">Enviar convite</button></form></section></div>
       <p id="message" class="message"></p>
       <section class="admin-section"><div class="section-title-row"><h2>Eventos cadastrados</h2><span>${all.data.events.length}</span></div><div class="event-grid">${all.data.events.map(eventCard).join('') || '<p>Nenhum evento cadastrado.</p>'}</div></section>
       <section class="admin-section"><div class="section-title-row"><h2>Usuários cadastrados</h2><span>${users.data.users.length}</span></div><div class="table-wrap"><table><thead><tr><th>Nome</th><th>E-mail</th><th>Status</th><th>Ação</th></tr></thead><tbody>${users.data.users.map(userRow).join('') || '<tr><td colspan="4">Nenhum usuário cadastrado.</td></tr>'}</tbody></table></div></section>`);
