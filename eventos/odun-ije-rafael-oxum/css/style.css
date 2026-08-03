@@ -1186,3 +1186,136 @@ small {
 /* ==========================================================
    FIM DO ARQUIVO
 ========================================================== */
+
+/* ==========================================================
+   PÁGINA PÚBLICA — FLUXO EDITORIAL
+========================================================== */
+
+.event-public-page {
+    background: #111112;
+    background-image:
+        radial-gradient(circle at 50% 0, rgba(212, 175, 55, .10), transparent 30rem),
+        linear-gradient(180deg, #171719 0%, #101011 100%);
+}
+.event-public-page .page {
+    position: relative;
+}
+.event-public-page .section {
+    position: relative;
+    padding-block: clamp(4rem, 9vw, 8rem);
+}
+.event-public-page .section:not(.hero)::before {
+    content: "";
+    display: block;
+    width: min(7rem, 22vw);
+    height: 1px;
+    margin: 0 auto clamp(3rem, 6vw, 5rem);
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+}
+.event-public-page .surface {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+.event-public-page .surface:hover {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+.event-public-page .hero {
+    padding-top: clamp(5rem, 11vw, 9rem);
+}
+.event-public-page .hero-surface {
+    max-width: 52rem;
+    margin: 0 auto;
+}
+.event-public-page .hero-surface::before {
+    background: radial-gradient(circle at 50% 15%, rgba(212, 175, 55, .18), transparent 46%);
+}
+.event-public-page .hero-layout {
+    gap: clamp(1.5rem, 4vw, 3rem);
+}
+.event-public-page .hero-logo {
+    width: min(230px, 58vw);
+}
+.event-public-page .hero-description {
+    max-width: 39rem;
+    line-height: 1.8;
+}
+.event-public-page .section-header {
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+.event-public-page .section-subtitle {
+    line-height: 1.7;
+}
+.event-public-page .info-card,
+.event-public-page .countdown-card {
+    min-height: auto;
+    padding: clamp(1rem, 3vw, 1.5rem) 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(212, 175, 55, .22);
+    border-radius: 0;
+    box-shadow: none;
+}
+.event-public-page .info-card:hover,
+.event-public-page .countdown-card:hover {
+    transform: none;
+    background: transparent;
+    border-color: rgba(212, 175, 55, .55);
+    box-shadow: none;
+}
+.event-public-page .info-card {
+    justify-content: flex-start;
+}
+.event-public-page .icon-circle {
+    background: transparent;
+    border-color: rgba(212, 175, 55, .42);
+}
+.event-public-page .countdown .grid {
+    gap: 0 clamp(1rem, 4vw, 3rem);
+}
+.event-public-page .countdown-card {
+    gap: .4rem;
+}
+.event-public-page .countdown-value {
+    font-size: clamp(2.3rem, 5vw, 3.6rem);
+}
+.event-public-page .rsvp-layout,
+.event-public-page .directions-layout {
+    max-width: 42rem;
+    margin: 0 auto;
+    gap: 1.5rem;
+}
+.event-public-page .rsvp-layout p,
+.event-public-page .directions-layout p {
+    line-height: 1.8;
+}
+.event-public-page .btn {
+    border-radius: 999px;
+}
+.event-public-page .footer {
+    padding-top: 2rem;
+}
+.event-public-page .footer .surface {
+    border-top: 1px solid rgba(212, 175, 55, .22);
+    padding-top: clamp(3rem, 7vw, 5rem);
+}
+.event-public-page .footer-logo {
+    width: 78px;
+}
+
+@media (max-width: 576px) {
+    .event-public-page .section {
+        padding-block: 3.5rem;
+    }
+    .event-public-page .section:not(.hero)::before {
+        margin-bottom: 2.5rem;
+    }
+    .event-public-page .info-card {
+        padding-block: 1rem;
+    }
+}
